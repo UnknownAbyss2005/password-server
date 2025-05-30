@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify
+import os
 
 app = Flask(__name__)
 current_password = "InitialPassword123"
@@ -18,3 +19,7 @@ def set_password():
         current_password = data["new_password"]
         return jsonify({"status": "UPDATED"})
     return jsonify({"status": "FAILED"})
+
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
