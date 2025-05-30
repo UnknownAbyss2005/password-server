@@ -2,14 +2,14 @@ from flask import Flask, request, jsonify
 import os
 
 app = Flask(__name__)
-current_password = "InitialPassword123"
+current_password = "attendance"
 
 @app.route("/check_password", methods=["POST"])
 def check_password():
-    data = request.get_json(force=True)
+    data = request.get_json()
     if data and data.get("password") == current_password:
-        return jsonify({"status": "OK"})
-    return jsonify({"status": "INVALID"})
+        return jsonify({"valid": True})
+    return jsonify({"valid": False})
 
 @app.route("/set_password", methods=["POST"])
 def set_password():
