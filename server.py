@@ -6,7 +6,7 @@ current_password = "InitialPassword123"
 
 @app.route("/check_password", methods=["POST"])
 def check_password():
-    data = request.get_json()
+    data = request.get_json(force=True)
     if data and data.get("password") == current_password:
         return jsonify({"status": "OK"})
     return jsonify({"status": "INVALID"})
