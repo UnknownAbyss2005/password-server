@@ -11,7 +11,7 @@ def check_password():
         return jsonify({"valid": True})
     return jsonify({"valid": False})
 
-@app.route("/ping", methods=["GET"])
+@app.route("/ping", methods=["GET"], strict_slashes=False)
 def ping():
     return jsonify({"status": "alive"})
 
